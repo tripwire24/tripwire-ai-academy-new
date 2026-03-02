@@ -8,6 +8,7 @@ import Link from 'next/link'
 import {
   Brain, Shield, Building2, MessageSquareCode, Terminal,
   Sparkles, Image, Workflow, Lock, Clock, ArrowRight,
+  PlayCircle, Settings,
   type LucideIcon,
 } from 'lucide-react'
 
@@ -33,6 +34,8 @@ export default async function DashboardPage() {
     .eq('id', user.id)
     .single()
 
+  const isAdmin = profile?.role === 'admin' || profile?.role === 'trainer';
+
   return (
     <div className="flex min-h-screen flex-col">
       <Nav />
@@ -43,13 +46,24 @@ export default async function DashboardPage() {
             <div className="mb-4 flex items-center space-x-1 text-sm text-muted-foreground">
               <div className="overflow-hidden text-ellipsis whitespace-nowrap">Dashboard</div>
             </div>
-            <div className="space-y-2">
-              <h1 className="scroll-m-20 text-4xl font-bold tracking-tight">
-                Welcome, {profile?.full_name || user.email}
-              </h1>
-              <p className="text-lg text-muted-foreground">
-                Pick up where you left off or explore new modules.
-              </p>
+            <div className="flex items-start justify-between">
+              <div className="space-y-2">
+                <h1 className="scroll-m-20 text-4xl font-bold tracking-tight">
+                  Welcome, {profile?.full_name || user.email}
+                </h1>
+                <p className="text-lg text-muted-foreground">
+                  Pick up where you left off or explore new modules.
+                </p>
+              </div>
+              {isAdmin && (
+                <Link
+                  href="/admin"
+                  className="inline-flex items-center gap-2 rounded-md border border-border px-4 py-2 text-sm font-medium hover:bg-secondary transition-colors shrink-0"
+                >
+                  <Settings className="h-4 w-4" />
+                  Admin
+                </Link>
+              )}
             </div>
 
             {/* Quick stats */}
@@ -96,6 +110,7 @@ export default async function DashboardPage() {
                           {course.duration}
                         </span>
                         <span className="inline-flex items-center gap-1 text-xs font-medium text-accent opacity-0 group-hover:opacity-100 transition-opacity">
+                          <PlayCircle className="h-3 w-3" />
                           Start <ArrowRight className="h-3 w-3" />
                         </span>
                       </div>

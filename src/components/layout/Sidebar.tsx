@@ -18,7 +18,7 @@ export function Sidebar() {
               {foundational.map((course) => (
                 <Link
                   key={course.id}
-                  href={`/courses/${course.slug}`}
+                  href={`/courses/${course.slug}/learn`}
                   className="group flex w-full items-center rounded-md px-2 py-1.5 hover:bg-secondary text-muted-foreground hover:text-foreground transition-colors"
                 >
                   <span className="font-mono text-xs mr-2 text-muted-foreground/60">{course.code}</span>
@@ -37,7 +37,7 @@ export function Sidebar() {
               {implementation.map((course) => (
                 <Link
                   key={course.id}
-                  href={`/courses/${course.slug}`}
+                  href={`/courses/${course.slug}/learn`}
                   className="group flex w-full items-center rounded-md px-2 py-1.5 hover:bg-secondary text-muted-foreground hover:text-foreground transition-colors"
                 >
                   <span className="font-mono text-xs mr-2 text-muted-foreground/60">{course.code}</span>

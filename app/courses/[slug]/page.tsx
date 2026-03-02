@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Nav } from "@/src/components/layout/Nav";
 import { Footer } from "@/src/components/layout/Footer";
 import { Breadcrumbs } from "@/src/components/layout/Breadcrumbs";
+import { EnrollButton } from "@/src/components/EnrollButton";
 import { courses, getCourseBySlug } from "@/src/data/courses";
 import {
   Brain,
@@ -197,15 +198,7 @@ export default async function CourseDetailPage({ params }: { params: Promise<{ s
               {/* Enroll card */}
               <div className="rounded-xl border border-border bg-background p-6 shadow-sm sticky top-20">
                 <h3 className="font-semibold mb-4">Ready to begin?</h3>
-                <Link
-                  href="/login"
-                  className="w-full inline-flex items-center justify-center rounded-md bg-primary text-primary-foreground h-10 px-6 text-sm font-medium shadow hover:bg-primary/90 transition-colors"
-                >
-                  Sign Up &amp; Enroll
-                </Link>
-                <p className="text-xs text-muted-foreground mt-3 text-center">
-                  Free account required to track progress
-                </p>
+                <EnrollButton courseSlug={course.slug} />
 
                 <hr className="my-5 border-border" />
 
