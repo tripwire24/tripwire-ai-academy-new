@@ -284,20 +284,7 @@ export default function LearnPage() {
             </div>
 
             {/* Lesson content (markdown) */}
-            <article className="prose prose-zinc dark:prose-invert max-w-none mb-12
-              prose-headings:scroll-mt-20
-              prose-h2:text-xl prose-h2:font-bold prose-h2:mt-8 prose-h2:mb-4
-              prose-h3:text-lg prose-h3:font-semibold prose-h3:mt-6 prose-h3:mb-3
-              prose-p:leading-relaxed
-              prose-li:leading-relaxed
-              prose-table:text-sm
-              prose-th:bg-secondary prose-th:px-4 prose-th:py-2
-              prose-td:px-4 prose-td:py-2 prose-td:border-b prose-td:border-border
-              prose-blockquote:border-l-accent prose-blockquote:bg-accent/5 prose-blockquote:py-1 prose-blockquote:px-4 prose-blockquote:rounded-r-lg
-              prose-code:bg-secondary prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-sm
-              prose-pre:bg-secondary prose-pre:border prose-pre:border-border
-              prose-strong:text-foreground
-            ">
+            <article className="lesson-content mb-12">
               <ReactMarkdown>{content}</ReactMarkdown>
             </article>
 

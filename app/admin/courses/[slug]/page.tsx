@@ -189,11 +189,7 @@ export default async function AdminCourseDetailPage({
                 <h4 className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-3">
                   Content Preview
                 </h4>
-                <div className="prose prose-zinc dark:prose-invert prose-sm max-w-none max-h-64 overflow-y-auto rounded-lg border border-border bg-secondary/20 p-4
-                  prose-h2:text-base prose-h3:text-sm prose-p:text-sm
-                  prose-table:text-xs prose-th:bg-secondary/50 prose-th:px-3 prose-th:py-1.5
-                  prose-td:px-3 prose-td:py-1.5 prose-td:border-b prose-td:border-border
-                ">
+                <div className="lesson-content max-h-64 overflow-y-auto rounded-lg border border-border bg-secondary/20 p-4 text-sm">
                   <ReactMarkdown>{content}</ReactMarkdown>
                 </div>
                 <p className="text-xs text-muted-foreground mt-3">
