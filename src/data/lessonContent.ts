@@ -1691,14 +1691,14 @@ Create a security checklist for your environment:
 };
 
 export function getLessonContent(courseSlug: string, sectionIndex: number): string {
-  const key = \`\${courseSlug}:\${sectionIndex}\`;
-  return lessonContent[key] || \`
+  const key = `${courseSlug}:${sectionIndex}`;
+  return lessonContent[key] || `
 ## Content Coming Soon
 
 This section's detailed content is being developed. Check back soon for the full lesson material.
 
 In the meantime, review the section outline on the course page for key topics covered.
-\`;
+`;
 }
 
 export function getCourseLessonKeys(courseSlug: string): string[] {
