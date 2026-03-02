@@ -30,6 +30,12 @@ const config: Config = {
           foreground: "var(--accent-foreground)",
         },
         border: "var(--border)",
+        card: {
+          DEFAULT: "var(--card)",
+          foreground: "var(--card-foreground)",
+        },
+        input: "var(--input)",
+        ring: "var(--ring)",
       },
     },
   },

@@ -10,8 +10,10 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: 'Tripwire AI Academy',
-  description: 'Executive AI training platform for business leaders.',
+  description: 'Practical AI training for executives and practitioners — from strategic literacy to operational mastery.',
   manifest: '/manifest.json',
+  keywords: ['AI training', 'executive AI', 'AI literacy', 'prompt engineering', 'agentic workspaces', 'AI governance'],
+  authors: [{ name: 'Tripwire Digital Ltd.' }],
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

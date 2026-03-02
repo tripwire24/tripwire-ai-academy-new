@@ -12,6 +12,10 @@
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
   --color-border: var(--border);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
 }
 
 @layer base {
@@ -25,6 +29,10 @@
     --muted: #f8fafc;
     --muted-foreground: #64748b;
     --accent: #3b82f6;
+    --card: #ffffff;
+    --card-foreground: #0f172a;
+    --input: #e2e8f0;
+    --ring: #3b82f6;
     --accent-foreground: #ffffff;
     --border: #e2e8f0;
   }
@@ -41,6 +49,10 @@
     --accent: #3b82f6;
     --accent-foreground: #ffffff;
     --border: #1e293b;
+    --card: #0f172a;
+    --card-foreground: #f8fafc;
+    --input: #1e293b;
+    --ring: #3b82f6;
   }
 }
 

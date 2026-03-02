@@ -1,20 +1,49 @@
 import Link from "next/link";
+import { courses } from "@/src/data/courses";
 
 export function Sidebar() {
+  const foundational = courses.filter((c) => c.tier === "foundational");
+  const implementation = courses.filter((c) => c.tier === "implementation");
+
   return (
-    <aside className="fixed top-16 z-30 -ml-2 hidden h-[calc(100vh-3.5rem)] w-full shrink-0 md:sticky md:block md:w-64 border-r border-border">
+    <aside className="fixed top-16 z-30 -ml-2 hidden h-[calc(100vh-3.5rem)] w-full shrink-0 overflow-y-auto md:sticky md:block md:w-64 border-r border-border">
       <div className="h-full py-6 pr-6 lg:py-8">
-        <div className="w-full">
-          <div className="pb-4">
-            <h4 className="mb-1 rounded-md px-2 py-1 text-sm font-semibold">Modules</h4>
+        <div className="w-full space-y-6">
+          {/* Foundational */}
+          <div>
+            <h4 className="mb-2 rounded-md px-2 py-1 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+              Foundational
+            </h4>
             <div className="grid grid-flow-row auto-rows-max text-sm">
-              {/* TODO: Map through actual modules */}
-              <Link href="#" className="group flex w-full items-center rounded-md border border-transparent px-2 py-1 hover:underline text-muted-foreground">
-                Module 1: Introduction
-              </Link>
-              <Link href="#" className="group flex w-full items-center rounded-md border border-transparent px-2 py-1 hover:underline text-muted-foreground">
-                Module 2: AI Fundamentals
-              </Link>
+              {foundational.map((course) => (
+                <Link
+                  key={course.id}
+                  href={`/courses/${course.slug}`}
+                  className="group flex w-full items-center rounded-md px-2 py-1.5 hover:bg-secondary text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  <span className="font-mono text-xs mr-2 text-muted-foreground/60">{course.code}</span>
+                  {course.shortTitle}
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          {/* Implementation */}
+          <div>
+            <h4 className="mb-2 rounded-md px-2 py-1 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+              Implementation
+            </h4>
+            <div className="grid grid-flow-row auto-rows-max text-sm">
+              {implementation.map((course) => (
+                <Link
+                  key={course.id}
+                  href={`/courses/${course.slug}`}
+                  className="group flex w-full items-center rounded-md px-2 py-1.5 hover:bg-secondary text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  <span className="font-mono text-xs mr-2 text-muted-foreground/60">{course.code}</span>
+                  {course.shortTitle}
+                </Link>
+              ))}
             </div>
           </div>
         </div>

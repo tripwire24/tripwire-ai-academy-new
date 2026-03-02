@@ -3,6 +3,17 @@ import { redirect } from 'next/navigation'
 import { Nav } from '@/src/components/layout/Nav'
 import { Footer } from '@/src/components/layout/Footer'
 import { Sidebar } from '@/src/components/layout/Sidebar'
+import { courses } from '@/src/data/courses'
+import Link from 'next/link'
+import {
+  Brain, Shield, Building2, MessageSquareCode, Terminal,
+  Sparkles, Image, Workflow, Lock, Clock, ArrowRight,
+  type LucideIcon,
+} from 'lucide-react'
+
+const iconMap: Record<string, LucideIcon> = {
+  Brain, Shield, Building2, MessageSquareCode, Terminal, Sparkles, Image, Workflow, Lock,
+};
 
 export const dynamic = 'force-dynamic'
 
@@ -27,7 +38,7 @@ export default async function DashboardPage() {
       <Nav />
       <div className="container mx-auto flex-1 items-start md:grid md:grid-cols-[220px_minmax(0,1fr)] md:gap-6 lg:grid-cols-[240px_minmax(0,1fr)] lg:gap-10 px-4">
         <Sidebar />
-        <main className="relative py-6 lg:gap-10 lg:py-8 xl:grid xl:grid-cols-[1fr_300px]">
+        <main className="relative py-6 lg:py-8">
           <div className="mx-auto w-full min-w-0">
             <div className="mb-4 flex items-center space-x-1 text-sm text-muted-foreground">
               <div className="overflow-hidden text-ellipsis whitespace-nowrap">Dashboard</div>
@@ -40,19 +51,58 @@ export default async function DashboardPage() {
                 Pick up where you left off or explore new modules.
               </p>
             </div>
-            
-            <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-              {/* Placeholder for Course Cards */}
-              <div className="rounded-xl border border-border bg-card text-card-foreground shadow-sm p-6">
-                <h3 className="font-semibold leading-none tracking-tight mb-2">AI Fundamentals</h3>
-                <p className="text-sm text-muted-foreground mb-4">Master the basics of generative AI and LLMs.</p>
-                <div className="w-full bg-secondary rounded-full h-2.5 mb-4">
-                  <div className="bg-primary h-2.5 rounded-full" style={{ width: '45%' }}></div>
-                </div>
-                <button className="w-full inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring bg-primary text-primary-foreground shadow hover:bg-primary/90 h-9 px-4 py-2">
-                  Continue
-                </button>
+
+            {/* Quick stats */}
+            <div className="mt-8 grid gap-4 md:grid-cols-3">
+              <div className="rounded-xl border border-border bg-background p-4 shadow-sm">
+                <p className="text-sm text-muted-foreground">Courses Available</p>
+                <p className="text-2xl font-bold">{courses.length}</p>
               </div>
+              <div className="rounded-xl border border-border bg-background p-4 shadow-sm">
+                <p className="text-sm text-muted-foreground">Your Role</p>
+                <p className="text-2xl font-bold capitalize">{profile?.role || 'Learner'}</p>
+              </div>
+              <div className="rounded-xl border border-border bg-background p-4 shadow-sm">
+                <p className="text-sm text-muted-foreground">Total Hours</p>
+                <p className="text-2xl font-bold">25+</p>
+              </div>
+            </div>
+            
+            {/* Course grid */}
+            <h2 className="mt-10 mb-4 text-xl font-bold">All Courses</h2>
+            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+              {courses.map((course) => {
+                const Icon = iconMap[course.icon] ?? Brain;
+                return (
+                  <Link key={course.id} href={`/courses/${course.slug}`} className="group block">
+                    <div className="rounded-xl border border-border bg-background p-5 shadow-sm transition-all hover:shadow-md hover:-translate-y-0.5">
+                      <div className="flex items-center gap-3 mb-3">
+                        <div className="inline-flex items-center justify-center rounded-lg bg-accent/10 p-2">
+                          <Icon className="h-5 w-5 text-accent" />
+                        </div>
+                        <span className="inline-flex items-center rounded-full bg-secondary px-2 py-0.5 text-xs font-medium text-muted-foreground">
+                          {course.code}
+                        </span>
+                      </div>
+                      <h3 className="font-semibold leading-tight mb-1 group-hover:text-accent transition-colors">
+                        {course.shortTitle}
+                      </h3>
+                      <p className="text-sm text-muted-foreground mb-3 line-clamp-2">
+                        {course.description}
+                      </p>
+                      <div className="flex items-center justify-between">
+                        <span className="inline-flex items-center gap-1 text-xs text-muted-foreground">
+                          <Clock className="h-3.5 w-3.5" />
+                          {course.duration}
+                        </span>
+                        <span className="inline-flex items-center gap-1 text-xs font-medium text-accent opacity-0 group-hover:opacity-100 transition-opacity">
+                          Start <ArrowRight className="h-3 w-3" />
+                        </span>
+                      </div>
+                    </div>
+                  </Link>
+                );
+              })}
             </div>
           </div>
         </main>
