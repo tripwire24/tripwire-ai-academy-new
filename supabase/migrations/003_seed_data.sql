@@ -1,0 +1,2 @@
+-- Create supabase/migrations/003_seed_data.sql
+-- Placeholder for seed data
