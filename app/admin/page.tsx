@@ -9,6 +9,7 @@ import {
   ArrowRight,
 } from "lucide-react";
 import { courses } from "@/src/data/courses";
+import SeedDatabaseButton from "@/src/components/admin/SeedDatabaseButton";
 
 export const dynamic = "force-dynamic";
 
@@ -148,6 +149,8 @@ export default async function AdminDashboard() {
               </div>
               <ArrowRight className="h-4 w-4 text-muted-foreground" />
             </Link>
+
+            <SeedDatabaseButton />
           </div>
         </div>
 

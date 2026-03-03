@@ -48,7 +48,7 @@ export default function AdminCoursesPage() {
             Preview
           </Link>
           <Link
-            href={`/admin/courses/${course.slug}`}
+            href={`/admin/courses/${course.slug}/edit`}
             className="inline-flex items-center gap-1.5 rounded-md bg-primary text-primary-foreground px-3 py-1.5 text-xs font-medium hover:bg-primary/90 transition-colors"
           >
             <Edit className="h-3 w-3" />
@@ -64,14 +64,7 @@ export default function AdminCoursesPage() {
       <div className="mb-8">
         <h1 className="text-3xl font-bold tracking-tight">Manage Courses</h1>
         <p className="text-muted-foreground mt-1">
-          Edit course content, sections, and materials. Changes are saved to{" "}
-          <code className="bg-secondary px-1.5 py-0.5 rounded text-xs">
-            src/data/courses.ts
-          </code>{" "}
-          and{" "}
-          <code className="bg-secondary px-1.5 py-0.5 rounded text-xs">
-            src/data/lessonContent.ts
-          </code>
+          Edit course content, sections, and materials. Changes are saved to Supabase.
         </p>
       </div>
 
